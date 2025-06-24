@@ -1,0 +1,17 @@
+name: CI - Notificación de despliegue
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v2
+
+      - name: Enviar notificación a ntfy.sh
+        run: |
+          curl -X POST -d "¡Nuevo código subido a main!" https://ntfy.sh/devops-itla
